@@ -2,8 +2,16 @@ const { YAMap } = require("../YAMap");
 const { dataObj } = require("../utils/utils");
 
 describe("A Map.", () => {
+   let map: typeof YAMap;
+   const entries = [
+	  ["barks", true],
+	  ["active", true],
+	  ["size", "small"],
+	  ["breed", "poodle"]
+   ];
+   const map_keys = ["barks", "active", "size", "breed"];
+   const map_values = [true, true, "small", "poodle"];
    describe("Basic operations.", () => {
-	  let map: typeof YAMap;
 	  let data: typeof dataObj;
 	  let value: string;
 	  beforeAll(() => {
@@ -35,21 +43,15 @@ describe("A Map.", () => {
 	  });
 	  test("Should get the entries([key/value]).", () => {
 		 map.set("breed", "poodle");
-		 const entries = [
-			["barks", true],
-			["active", true],
-			["size", "small"],
-			["breed", "poodle"]
-		 ];
 		 expect(map.entries).toEqual(entries);
 	  }); // it
 	  test("Should get the keys of the map.", () => {
 		 const keys = map.keys;
-		 expect(keys).toEqual(["barks", "active", "size", "breed"]);
+		 expect(keys).toEqual(map_keys);
 	  }); // it
 	  test("Should get the values of the map.", () => {
 		 const values = map.values;
-		 expect(values).toEqual([true, true, "small", "poodle"]);
+		 expect(values).toEqual(map_values);
 	  }); // it
       test("Should clear the map.", () => {
 		 map.clear();
@@ -57,8 +59,26 @@ describe("A Map.", () => {
 	  });
    });
    describe("That is iterable.", () => {
-	  test.todo("Should iterate the entries.");
-	  test.todo("Should iterate the keys.");
-	  test.todo("Should iterate the values.");
+	  test("Should iterate the entries.", () => {
+		 let it = 0;
+		 for(const [key, value] of map.entries) {
+			expect([key, value]).toEqual(entries[it]);
+			it++;
+		 }
+	  });
+	  test("Should iterate the keys.", () => {
+		 let it = 0;
+		 for(const key of map.keys) {
+			expect(key).toEqual(map_keys[it]);
+			it++;
+		 }
+	  });
+	  test("Should iterate the values.", () => {
+		 let it = 0;
+		 for(const value of map.values) {
+			expect(value).toEqual(map_values[it]);
+			it++;
+		 }
+	  });
    });
 });
