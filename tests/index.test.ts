@@ -9,13 +9,16 @@ describe("A Map.", () => {
 	  beforeAll(() => {
 		 map = new YAMap();
 		 data = map.set("breed", "poodle");
+		 map.set("barks", true);
+		 map.set("active", true);
+		 map.set("size", "small");
 		 value = map.get("breed");
 	  });
 	  test("Should not be empty.", () => {
 		 expect(value).not.toBeFalsy();
 	  });
       test("Should set the key/value pair.", () => {
-		 expect(data[map.size - 1]).toHaveProperty("breed", "poodle");
+		 expect(data[0]).toHaveProperty("breed", "poodle");
 	  });
       test("Should get the value.", () => {
 		 expect(value).toBe("poodle");
@@ -24,17 +27,31 @@ describe("A Map.", () => {
 		 expect(map.has("breed")).toBeTruthy();
 	  });
       test("Should be of given size.", () => {
-		 expect(map.size).toBe(1);
+		 expect(map.size).toBe(4);
 	  });
       test("Should delete the given key/value pair.", () => {
 		 map.delete("breed");
 		 expect(map.has("breed")).toBeFalsy();
 	  });
-	  test.todo("Should get the entries([key/value])."); // it
-	  test.todo("Should get the keys of the map."); // it
-	  test.todo("Should get the values of the map."); // it
+	  test("Should get the entries([key/value]).", () => {
+		 map.set("breed", "poodle");
+		 const entries = [
+			["barks", true],
+			["active", true],
+			["size", "small"],
+			["breed", "poodle"]
+		 ];
+		 expect(map.entries).toEqual(entries);
+	  }); // it
+	  test("Should get the keys of the map.", () => {
+		 const keys = map.keys;
+		 expect(keys).toEqual(["barks", "active", "size", "breed"]);
+	  }); // it
+	  test("Should get the values of the map.", () => {
+		 const values = map.values;
+		 expect(values).toEqual([true, true, "small", "poodle"]);
+	  }); // it
       test("Should clear the map.", () => {
-		 data = map.set("breed", "poodle");
 		 map.clear();
 		 expect(map.has("breed")).toBeFalsy();
 	  });

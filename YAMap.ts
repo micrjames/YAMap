@@ -29,13 +29,31 @@ class YAMap extends Collection {
 	   delete data[foundIdx];
 	   return del;
 	}
-	entries() {
+	get entries() {
 	   // returns Iterator object that contains an array of [key, value] for each element in insertion order. 
+	   let entries = [];
+	   const keys = this.keys;
+	   const values = this.values;
+	   for(let i = 0; i < super.size; i++)
+	      entries = [...entries, [keys[i], values[i]]];
+	   return entries;
 	}
-	keys() {
+	get keys() {
 	   // returns Iterator object that contains the keys for each element in the Map object in insertion order.
+	   const data = super.get();
+	   const dataArr = Object.values(data);
+	   const keys = dataArr.flatMap((_, i) => 
+		  Object.keys(dataArr[i])
+	   );
+	   return keys;
 	}
-	values() {
+	get values() {
+	   const data = super.get();
+	   const dataArr = Object.values(data);
+	   const values = dataArr.flatMap((_, i) => 
+		  Object.values(dataArr[i])
+	   );
+	   return values;
 	}
 	clear() {
 	   const data = super.get();
