@@ -6,7 +6,14 @@ class YAMap extends Collection {
 	   super();
 	}
 	set(key: any, value: any): typeof dataObj {
-	   return super.push({[key]: value});
+	   if(!this.has(key)) return super.push({[key]: value});
+	   else {
+		  const data = super.get();
+		  const dataArr = Object.values(data);
+		  const foundObj = dataArr.find(obj => obj.hasOwnProperty(key));
+		  foundObj[key] = value;
+		  return super.data;
+	   }
 	}
     get(key: any) {
 	   const data = super.get();
