@@ -43,14 +43,14 @@ describe("A Map.", () => {
 	  });
 	  test("Should get the entries([key/value]).", () => {
 		 map.set("breed", "poodle");
-		 expect(map.entries).toEqual(entries);
+		 expect([...map.entries]).toEqual(entries);
 	  }); // it
 	  test("Should get the keys of the map.", () => {
-		 const keys = map.keys;
+		 const keys = [...map.keys];
 		 expect(keys).toEqual(map_keys);
 	  }); // it
 	  test("Should get the values of the map.", () => {
-		 const values = map.values;
+		 const values = [...map.values];
 		 expect(values).toEqual(map_values);
 	  }); // it
       test("Should clear the map.", () => {

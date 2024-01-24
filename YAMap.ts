@@ -36,30 +36,34 @@ class YAMap extends Collection {
 	   delete data[foundIdx];
 	   return del;
 	}
-	get entries() {
+	get entries(): typeof Collection {
 	   // returns Iterator object that contains an array of [key, value] for each element in insertion order. 
-	   let entries = [];
+	   const entries = new Collection();
 	   const keys = this.keys;
 	   const values = this.values;
 	   for(let i = 0; i < super.size; i++)
-	      entries = [...entries, [keys[i], values[i]]];
+	      entries.push([keys.getElement(i), values.getElement(i)]);
 	   return entries;
 	}
-	get keys() {
+	get keys(): typeof Collection {
 	   // returns Iterator object that contains the keys for each element in the Map object in insertion order.
+	   const keys = new Collection();
 	   const data = super.get();
 	   const dataArr = Object.values(data);
-	   const keys = dataArr.flatMap((_, i) => 
-		  Object.keys(dataArr[i])
-	   );
+	   dataArr.forEach((_, i) => { 
+		  const k = Object.keys(dataArr[i])[0];
+		  keys.push(k);
+	   });
 	   return keys;
 	}
-	get values() {
+	get values(): typeof Collection {
+	   const values = new Collection();
 	   const data = super.get();
 	   const dataArr = Object.values(data);
-	   const values = dataArr.flatMap((_, i) => 
-		  Object.values(dataArr[i])
-	   );
+	   dataArr.flatMap((_, i) => {
+		  const v = Object.values(dataArr[i])[0];
+		  values.push(v);
+	   });
 	   return values;
 	}
 	clear() {
