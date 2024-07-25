@@ -1,7 +1,7 @@
 {
-  "name": "testing-framework",
+  "name": "YAMap",
   "version": "1.0.0",
-  "description": "A framework to quickly setup a typescript code testing framework.",
+  "description": "An implementation of a map in Typescript.",
   "main": "index.js",
    "directories": {
     "test": "tests"
