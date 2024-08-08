@@ -1,5 +1,5 @@
-const { Collection } = require("../Collection/Collection");
-const { dataObj } = require("./utils/utils");
+import { Collection } from "../Collection/Collection";
+import { dataObj } from "./utils/utils";
 
 class YAMap extends Collection {
 	constructor() {

@@ -1,5 +1,5 @@
-const { YAMap } = require("../YAMap");
-const { dataObj } = require("../utils/utils");
+import { YAMap } from "../YAMap";
+import { dataObj } from "../utils/utils";
 
 describe("A Map.", () => {
    let map: typeof YAMap;
