@@ -1,7 +1,7 @@
 import { Collection } from "../Collection/Collection";
 import { dataObj } from "./utils/utils";
 
-class YAMap extends Collection {
+export class YAMap extends Collection {
 	constructor() {
 	   super();
 	}
@@ -74,5 +74,3 @@ class YAMap extends Collection {
 	   });
 	}
 }
-
-exports.YAMap = YAMap;
