@@ -1,4 +1,4 @@
-import { Collection } from "../Collection/Collection";
+import { Collection } from "./Collection/Collection";
 import { dataObj } from "./utils/utils";
 
 export class YAMap extends Collection {
