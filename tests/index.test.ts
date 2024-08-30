@@ -2,7 +2,7 @@ import { YAMap } from "../YAMap";
 import { dataObj } from "../utils/utils";
 
 describe("A Map.", () => {
-   let map: typeof YAMap;
+   let map: YAMap;
    const entries = [
 	  ["barks", true],
 	  ["active", true],
@@ -12,7 +12,7 @@ describe("A Map.", () => {
    const map_keys = ["barks", "active", "size", "breed"];
    const map_values = [true, true, "small", "poodle"];
    describe("Basic operations.", () => {
-	  let data: typeof dataObj;
+	  let data: dataObj;
 	  let value: string;
 	  beforeAll(() => {
 		 map = new YAMap();

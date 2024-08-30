@@ -5,7 +5,7 @@ export class YAMap extends Collection {
 	constructor() {
 	   super();
 	}
-	set(key: any, value: any): typeof dataObj {
+	set(key: any, value: any): dataObj {
 	   if(!this.has(key)) return super.push({[key]: value});
 	   else {
 		  const data = super.get();
